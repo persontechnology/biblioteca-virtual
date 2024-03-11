@@ -15,10 +15,13 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('nombre');
-            $table->string('descripcion')->nullable();
-            $table->string('isbn')->nullable();
-            $table->string('portada')->nullable();
+            $table->string('archivo')->nullable();
             
+            $table->foreignId('unidad_id')->constrained(
+                table: 'unidads'
+            )->onDelete('cascade');
+
+
         });
     }
 

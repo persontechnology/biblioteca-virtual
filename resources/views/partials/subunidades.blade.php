@@ -2,23 +2,14 @@
 
 <ul>
     @foreach($subunidades as $subunidad)
-        <li>
+        <li id="{{ $subunidad->id }}" data-tipo="unidad" data-crearlibro="{{ route('libro.crear',$subunidad->id) }}" data-url="{{ route('unidades.show',$subunidad) }}" data-nombre="{{ $subunidad->nombre }}" data-id="{{ $subunidad->id }}" data-jstree='{"opened":true}'>
             {{ $subunidad->nombre }}
 
-            <form action="{{ route('unidad.guardar-sub') }}" method="post">
-                @csrf
-                <input type="hidden" name="curso_id" value="{{ $curso->id }}">
-                <input type="hidden" name="unidad_padre_id" value="{{ $subunidad->id }}">
+            @if ($subunidad->libros->count()>0)
+                @include('partials.libros',['libros'=>$subunidad->libros])
+            @endif
 
-                <div class="input-group">
-                    
-                    <div class="form-floating">
-                        <input type="text" name="nombre" class="form-control" required value="{{ old('nombre') }}" autofocus>
-                        <label>Ingresar nombre de  sub-unidad</label>
-                    </div>
-                    <button class="btn btn-primary" type="submit">Guardar</button>
-                </div>
-            </form>
+
 
             @if($subunidad->subunidades->count() > 0)
                 @include('partials.subunidades', ['subunidades' => $subunidad->subunidades])

@@ -23,9 +23,13 @@
 	<script src="{{ asset('assets/js/jquery/jquery.min.js') }}"></script>
 	<script src="{{ asset('assets/js/vendor/tables/datatables/datatables.min.js') }}"></script>
 	<script src="{{ asset('assets/js/vendor/tables/datatables/extensions/natural_sort.js') }}"></script>
-
 	<script src="{{ asset('assets/js/vendor/visualization/echarts/echarts.min.js') }}"></script>
 	<script src="{{ asset('assets/js/vendor/maps/echarts/world.js') }}"></script>
+	<link rel="stylesheet" href="{{ asset('assets/js/vendor/jstree/themes/default/style.min.css') }}" />
+	<script src="{{ asset('assets/js/vendor/jstree/jstree.min.js') }}"></script>
+
+
+
 
 	<script src="{{ asset('assets/js/app.js') }}"></script>
 	<script src="{{ asset('assets/demo/charts/pages/dashboard_6/area_gradient.js') }}"></script>
@@ -75,14 +79,14 @@
 				<li class="nav-item nav-item-dropdown-xl dropdown">
 					<a href="#" class="navbar-nav-link align-items-center rounded-pill p-1" data-bs-toggle="dropdown">
 						<div class="status-indicator-container">
-							<img src="{{ asset('assets/images/demo/users/face11.jpg') }}" class="w-32px h-32px rounded-pill" alt="">
+							<img src="{{ asset('images/use.png') }}" class="w-32px h-32px rounded-pill" alt="">
 							<span class="status-indicator bg-success"></span>
 						</div>
-						<span class="d-none d-md-inline-block mx-md-2">Victoria</span>
+						<span class="d-none d-md-inline-block mx-md-2">{{ Auth::user()->email }}</span>
 					</a>
 
 					<div class="dropdown-menu dropdown-menu-end">
-						<a href="#" class="dropdown-item">
+						<a href="{{ route('profile.edit') }}" class="dropdown-item">
 							<i class="ph-user-circle me-2"></i>
 							Mi perfil
 						</a>

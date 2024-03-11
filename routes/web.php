@@ -4,6 +4,7 @@ use App\Http\Controllers\LibroController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UnidadController;
 use App\Models\Curso;
+use App\Models\Libro;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
@@ -56,11 +57,14 @@ Route::middleware('auth')->group(function () {
     
 
 
-    Route::resource('unidades',LibroController::class);
+    Route::resource('unidades',UnidadController::class);
     Route::get('unidad/{curso}',[UnidadController::class,'index2'])->name('unidad.index2');
     Route::post('unidad-guardar',[UnidadController::class,'store'])->name('unidad.guardar');
     Route::post('unidad-guardar-sub',[UnidadController::class,'storeSub'])->name('unidad.guardar-sub');
     
+
+    Route::resource('libros',LibroController::class);
+    Route::get('libro-crear/{unidad}',[LibroController::class,'crear'])->name('libro.crear');
 
 });
 

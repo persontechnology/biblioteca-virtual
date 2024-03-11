@@ -53,9 +53,15 @@ class UnidadController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Unidad $unidad)
+    public function show($unidadId)
     {
-        //
+        $unidad=Unidad::find($unidadId);
+        try {
+            $unidad->delete();
+        } catch (\Throwable $th) {
+            
+        }
+        return redirect()->route('unidad.index2',$unidad->curso_id);
     }
 
     /**
