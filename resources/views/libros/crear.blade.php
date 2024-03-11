@@ -23,7 +23,7 @@
 
             <div class="my-2">
                 <label>Selecionar libro en formato PDF.</label>
-                <input type="file" name="archivo" class="form-control" accept="application/pdf">
+                <input type="file" name="archivo" class="form-control" required accept="application/pdf">
             </div>
 
 
